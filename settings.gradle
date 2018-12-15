@@ -1,1 +1,1 @@
-include 'master', 'client'
+include 'runner', 'master'
