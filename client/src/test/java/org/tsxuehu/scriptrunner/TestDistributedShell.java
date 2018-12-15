@@ -66,7 +66,6 @@ import org.apache.hadoop.yarn.api.records.timeline.TimelineDomain;
 import org.apache.hadoop.yarn.api.records.timeline.TimelineEntities;
 import org.apache.hadoop.yarn.api.records.timelineservice.TimelineEntity;
 import org.apache.hadoop.yarn.api.records.timelineservice.TimelineEntityType;
-import org.apache.hadoop.yarn.applications.distributedshell.ApplicationMaster.DSEvent;
 import org.apache.hadoop.yarn.client.api.YarnClient;
 import org.apache.hadoop.yarn.client.api.impl.DirectTimelineWriter;
 import org.apache.hadoop.yarn.client.api.impl.TestTimelineClient;
@@ -530,11 +529,11 @@ public class TestDistributedShell {
       // Check if required events are published and same idprefix is sent for
       // on each publish.
       verifyEntityForTimelineV2(dsAppAttemptEntityFile,
-          DSEvent.DS_APP_ATTEMPT_START.toString(), 1, 1, 0, true);
+          ApplicationMaster.DSEvent.DS_APP_ATTEMPT_START.toString(), 1, 1, 0, true);
       // to avoid race condition of testcase, atleast check 40 times with sleep
       // of 50ms
       verifyEntityForTimelineV2(dsAppAttemptEntityFile,
-          DSEvent.DS_APP_ATTEMPT_END.toString(), 1, 40, 50, true);
+          ApplicationMaster.DSEvent.DS_APP_ATTEMPT_END.toString(), 1, 40, 50, true);
 
       // Verify DS_CONTAINER entities posted by the client.
       String containerTimestampFileName =
@@ -545,11 +544,11 @@ public class TestDistributedShell {
       // Check if required events are published and same idprefix is sent for
       // on each publish.
       verifyEntityForTimelineV2(dsContainerEntityFile,
-          DSEvent.DS_CONTAINER_START.toString(), 1, 1, 0, true);
+          ApplicationMaster.DSEvent.DS_CONTAINER_START.toString(), 1, 1, 0, true);
       // to avoid race condition of testcase, atleast check 40 times with sleep
       // of 50ms
       verifyEntityForTimelineV2(dsContainerEntityFile,
-          DSEvent.DS_CONTAINER_END.toString(), 1, 40, 50, true);
+          ApplicationMaster.DSEvent.DS_CONTAINER_END.toString(), 1, 40, 50, true);
 
       // Verify NM posting container metrics info.
       String containerMetricsTimestampFileName =
