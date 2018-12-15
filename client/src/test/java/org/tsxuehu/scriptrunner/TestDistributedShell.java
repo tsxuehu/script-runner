@@ -622,9 +622,9 @@ public class TestDistributedShell {
         int attempt = 60;
         ContainerManagerImpl cm =
                 ((ContainerManagerImpl) nm.getNMContext().getContainerManager());
-        while (cm.getBlockNewContainerRequestsStatus() && attempt-- > 0) {
+        /*while (cm.getBlockNewContainerRequestsStatus() && attempt-- > 0) {
             Thread.sleep(2000);
-        }
+        }*/
     }
 
     @Test(timeout = 90000)
