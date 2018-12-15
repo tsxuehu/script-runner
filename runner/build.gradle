@@ -1,11 +1,16 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 group 'org.tsxuehu'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
+
+application {
+    mainClassName = "org.tsxuehu.scriptrunner.Client"
+}
 
 dependencies {
     compile group: 'org.apache.hadoop', name: 'hadoop-yarn-client', version: '2.9.2'
