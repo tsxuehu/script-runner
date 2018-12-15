@@ -62,3 +62,4 @@ run/
 static/
 .vscode/
 .gradle/
+target/
