@@ -503,24 +503,7 @@ public class ApplicationMaster {
         if (fileExist(shellArgsPath)) {
             shellArgs = readContent(shellArgsPath);
         }
-
-        if (cliParser.hasOption("shell_env")) {
-            String shellEnvs[] = cliParser.getOptionValues("shell_env");
-            for (String env : shellEnvs) {
-                env = env.trim();
-                int index = env.indexOf('=');
-                if (index == -1) {
-                    shellEnv.put(env, "");
-                    continue;
-                }
-                String key = env.substring(0, index);
-                String val = "";
-                if (index < (env.length() - 1)) {
-                    val = env.substring(index + 1);
-                }
-                shellEnv.put(key, val);
-            }
-        }
+        Utils.parseEnv(cliParser,"shell_env",shellEnv);
 
         if (envs.containsKey(DSConstants.DISTRIBUTEDSHELLSCRIPTLOCATION)) {
             scriptPath = envs.get(DSConstants.DISTRIBUTEDSHELLSCRIPTLOCATION);

@@ -406,23 +406,8 @@ public class Client {
         if (cliParser.hasOption("shell_args")) {
             shellArgs = cliParser.getOptionValues("shell_args");
         }
-        if (cliParser.hasOption("shell_env")) {
-            String envs[] = cliParser.getOptionValues("shell_env");
-            for (String env : envs) {
-                env = env.trim();
-                int index = env.indexOf('=');
-                if (index == -1) {
-                    shellEnv.put(env, "");
-                    continue;
-                }
-                String key = env.substring(0, index);
-                String val = "";
-                if (index < (env.length() - 1)) {
-                    val = env.substring(index + 1);
-                }
-                shellEnv.put(key, val);
-            }
-        }
+        Utils.parseEnv(cliParser,"shell_env",shellEnv);
+
         shellCmdPriority = Integer.parseInt(cliParser.getOptionValue("shell_cmd_priority", "0"));
 
         containerMemory = Integer.parseInt(cliParser.getOptionValue("container_memory", "10"));

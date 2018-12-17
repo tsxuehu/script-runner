@@ -320,7 +320,7 @@ public class TestDistributedShell {
         "--num_containers",
         "2",
         "--shell_command",
-        Shell.WINDOWS ? "dir" : "ls",
+        Shell.WINDOWS ? "dir" : "echo \'hello tsxuehu\'",
         "--master_memory",
         "512",
         "--master_vcores",
